@@ -24,27 +24,30 @@ public class ScriptAE2FC implements IScriptLoader {
         scriptName.setLength(0);
         scriptName.append("AE2FC");
         dependencies.clear();
-        dependencies.addAll(java.util.Arrays.asList("ae2fc", "appliedenergistics2", "extracells", "OpenComputers"));
+        dependencies.addAll(java.util.Arrays.asList(
+                ModIds.AE2FC.toString(),
+                ModIds.AE2.toString(),
+                ModIds.ExtraCells.toString(),
+                ModIds.OpenComputers.toString()
+        ));
     }
 
     @Override
     public void loadRecipes() {
-        final ItemStack AE2_INTERFACE = getModItem("appliedenergistics2", "tile.BlockInterface", 1);
-        final ItemStack AE2_PROCESS_ENG = getModItem("appliedenergistics2", "item.ItemMultiMaterial", 1, 24);
-        final ItemStack AE2_STORAGE_BUS = getModItem("appliedenergistics2", "item.ItemMultiPart", 1, 220);
-        final ItemStack AE2_GLASS_CABLE = getModItem("appliedenergistics2", "item.ItemMultiPart", 1, 16);
-        final ItemStack AE2_PROCESS_CAL = getModItem("appliedenergistics2", "item.ItemMultiMaterial", 1, 23);
-        final ItemStack AE2_WORK_BENCH = getModItem("appliedenergistics2", "tile.BlockCellWorkbench", 1);
-        final ItemStack AE2_PATTERN_TERM = getModItem("appliedenergistics2", "item.ItemMultiPart", 1, 340);
-        final ItemStack AE2_PROCESS_LOG = getModItem("appliedenergistics2", "item.ItemMultiMaterial", 1, 22);
-        final ItemStack AE2_QUARTZ_GLASS = getModItem("appliedenergistics2", "tile.BlockQuartzGlass", 1);
-        final ItemStack AE2_LAMP_GLASS = getModItem("appliedenergistics2", "tile.BlockQuartzLamp", 1);
-        final ItemStack AE2_CELL_HOUSING = getModItem("appliedenergistics2", "item.ItemMultiMaterial", 1, 39);
-        final ItemStack AE2_CORE_ANN = getModItem("appliedenergistics2", "item.ItemMultiMaterial", 1, 44);
-        final ItemStack AE2_CORE_FOM = getModItem("appliedenergistics2", "item.ItemMultiMaterial", 1, 43);
-        final ItemStack AE2_BLANK_PATTERN = getModItem("appliedenergistics2", "item.ItemMultiMaterial", 1, 52);
-        final ItemStack AE2_PURE_CERTUS =
-                new ItemStack(GameRegistry.findItem("appliedenergistics2", "item.ItemMultiMaterial"), 1, 10);
+        final ItemStack AE2_INTERFACE = getModItem(ModIds.AE2.toString(), "tile.BlockInterface", 1);
+        final ItemStack AE2_PROCESS_ENG = getModItem(ModIds.AE2.toString(), "item.ItemMultiMaterial", 1, 24);
+        final ItemStack AE2_STORAGE_BUS = getModItem(ModIds.AE2.toString(), "item.ItemMultiPart", 1, 220);
+        final ItemStack AE2_GLASS_CABLE = getModItem(ModIds.AE2.toString(), "item.ItemMultiPart", 1, 16);
+        final ItemStack AE2_PROCESS_CAL = getModItem(ModIds.AE2.toString(), "item.ItemMultiMaterial", 1, 23);
+        final ItemStack AE2_WORK_BENCH = getModItem(ModIds.AE2.toString(), "tile.BlockCellWorkbench", 1);
+        final ItemStack AE2_PATTERN_TERM = getModItem(ModIds.AE2.toString(), "item.ItemMultiPart", 1, 340);
+        final ItemStack AE2_PROCESS_LOG = getModItem(ModIds.AE2.toString(), "item.ItemMultiMaterial", 1, 22);
+        final ItemStack AE2_QUARTZ_GLASS = getModItem(ModIds.AE2.toString(), "tile.BlockQuartzGlass", 1);
+        final ItemStack AE2_LAMP_GLASS = getModItem(ModIds.AE2.toString(), "tile.BlockQuartzLamp", 1);
+        final ItemStack AE2_CELL_HOUSING = getModItem(ModIds.AE2.toString(), "item.ItemMultiMaterial", 1, 39);
+        final ItemStack AE2_CORE_ANN = getModItem(ModIds.AE2.toString(), "item.ItemMultiMaterial", 1, 44);
+        final ItemStack AE2_CORE_FOM = getModItem(ModIds.AE2.toString(), "item.ItemMultiMaterial", 1, 43);
+        final ItemStack AE2_BLANK_PATTERN = getModItem(ModIds.AE2.toString(), "item.ItemMultiMaterial", 1, 52);
         final ItemStack BUCKET = new ItemStack(Items.bucket, 1);
         final ItemStack IRON_BAR = new ItemStack(Blocks.iron_bars, 1);
         final ItemStack IRON_PLATE = GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Iron, 1L);
@@ -52,33 +55,35 @@ public class ScriptAE2FC implements IScriptLoader {
         final ItemStack NIOBIUM_PLATE = GT_OreDictUnificator.get(OrePrefixes.plate, Materials.NiobiumTitanium, 1L);
         final ItemStack NETHER_QUARTZ_PLATE = GT_OreDictUnificator.get(OrePrefixes.plate, Materials.NetherQuartz, 1L);
         final ItemStack LAPIS_SCREW = GT_OreDictUnificator.get(OrePrefixes.screw, Materials.Lapis, 1L);
-        final ItemStack FLUID_CORE_1 = getModItem("dreamcraft", "item.EngineeringProcessorFluidDiamondCore", 1);
-        final ItemStack CELL_1 = getModItem("ae2fc", "fluid_storage1", 1, 0);
-        final ItemStack CELL_4 = getModItem("ae2fc", "fluid_storage4", 1, 0);
-        final ItemStack CELL_16 = getModItem("ae2fc", "fluid_storage16", 1, 0);
-        final ItemStack CELL_64 = getModItem("ae2fc", "fluid_storage64", 1, 0);
-        final ItemStack CELL_256 = getModItem("ae2fc", "fluid_storage256", 1, 0);
-        final ItemStack CELL_1024 = getModItem("ae2fc", "fluid_storage1024", 1, 0);
-        final ItemStack CELL_4096 = getModItem("ae2fc", "fluid_storage4096", 1, 0);
-        final ItemStack COMPONENT_1 = getModItem("ae2fc", "fluid_part", 1, 0);
-        final ItemStack COMPONENT_4 = getModItem("ae2fc", "fluid_part", 1, 1);
-        final ItemStack COMPONENT_16 = getModItem("ae2fc", "fluid_part", 1, 2);
-        final ItemStack COMPONENT_64 = getModItem("ae2fc", "fluid_part", 1, 3);
-        final ItemStack COMPONENT_256 = getModItem("ae2fc", "fluid_part", 1, 4);
-        final ItemStack COMPONENT_1024 = getModItem("ae2fc", "fluid_part", 1, 5);
-        final ItemStack COMPONENT_4096 = getModItem("ae2fc", "fluid_part", 1, 6);
-        final ItemStack AE2FC_INTERFACE = getModItem("ae2fc", "fluid_interface", 1, 0);
-        final ItemStack AE2FC_INTERFACE_SMALL = getModItem("ae2fc", "part_fluid_interface", 1, 0);
-        final ItemStack AE2FC_DISCRETIZER = getModItem("ae2fc", "fluid_discretizer", 1, 0);
-        final ItemStack AE2FC_ENCODER = getModItem("ae2fc", "fluid_pattern_encoder", 1, 0);
-        final ItemStack AE2FC_DECODER = getModItem("ae2fc", "fluid_packet_decoder", 1, 0);
-        final ItemStack AE2FC_BUFFER = getModItem("ae2fc", "ingredient_buffer", 1, 0);
-        final ItemStack AE2FC_BUFFER_LARGE = getModItem("ae2fc", "large_ingredient_buffer", 1, 0);
-        final ItemStack AE2FC_TERMINAL = getModItem("ae2fc", "part_fluid_pattern_terminal", 1, 0);
-        final ItemStack AE2FC_TERMINAL_PRO = getModItem("ae2fc", "part_fluid_pattern_terminal_ex", 1, 0);
-        final ItemStack AE2FC_EXPORTBUS = getModItem("ae2fc", "part_fluid_export", 1, 0);
-        final ItemStack AE2FC_IMPORTBUS = getModItem("ae2fc", "part_fluid_import", 1, 0);
-        final ItemStack AE2FC_OCEDITOR = getModItem("ae2fc", "oc_pattern_editor", 1, 0);
+
+        final ItemStack FLUID_CORE_1 = com.dreammaster.item.ItemList.EngineeringProcessorFluidDiamondCore.getIS();
+        
+        final ItemStack CELL_1 = getModItem(ModIds.AE2FC.toString(), "fluid_storage1", 1, 0);
+        final ItemStack CELL_4 = getModItem(ModIds.AE2FC.toString(), "fluid_storage4", 1, 0);
+        final ItemStack CELL_16 = getModItem(ModIds.AE2FC.toString(), "fluid_storage16", 1, 0);
+        final ItemStack CELL_64 = getModItem(ModIds.AE2FC.toString(), "fluid_storage64", 1, 0);
+        final ItemStack CELL_256 = getModItem(ModIds.AE2FC.toString(), "fluid_storage256", 1, 0);
+        final ItemStack CELL_1024 = getModItem(ModIds.AE2FC.toString(), "fluid_storage1024", 1, 0);
+        final ItemStack CELL_4096 = getModItem(ModIds.AE2FC.toString(), "fluid_storage4096", 1, 0);
+        final ItemStack COMPONENT_1 = getModItem(ModIds.AE2FC.toString(), "fluid_part", 1, 0);
+        final ItemStack COMPONENT_4 = getModItem(ModIds.AE2FC.toString(), "fluid_part", 1, 1);
+        final ItemStack COMPONENT_16 = getModItem(ModIds.AE2FC.toString(), "fluid_part", 1, 2);
+        final ItemStack COMPONENT_64 = getModItem(ModIds.AE2FC.toString(), "fluid_part", 1, 3);
+        final ItemStack COMPONENT_256 = getModItem(ModIds.AE2FC.toString(), "fluid_part", 1, 4);
+        final ItemStack COMPONENT_1024 = getModItem(ModIds.AE2FC.toString(), "fluid_part", 1, 5);
+        final ItemStack COMPONENT_4096 = getModItem(ModIds.AE2FC.toString(), "fluid_part", 1, 6);
+        final ItemStack AE2FC_INTERFACE = getModItem(ModIds.AE2FC.toString(), "fluid_interface", 1, 0);
+        final ItemStack AE2FC_INTERFACE_SMALL = getModItem(ModIds.AE2FC.toString(), "part_fluid_interface", 1, 0);
+        final ItemStack AE2FC_DISCRETIZER = getModItem(ModIds.AE2FC.toString(), "fluid_discretizer", 1, 0);
+        final ItemStack AE2FC_ENCODER = getModItem(ModIds.AE2FC.toString(), "fluid_pattern_encoder", 1, 0);
+        final ItemStack AE2FC_DECODER = getModItem(ModIds.AE2FC.toString(), "fluid_packet_decoder", 1, 0);
+        final ItemStack AE2FC_BUFFER = getModItem(ModIds.AE2FC.toString(), "ingredient_buffer", 1, 0);
+        final ItemStack AE2FC_BUFFER_LARGE = getModItem(ModIds.AE2FC.toString(), "large_ingredient_buffer", 1, 0);
+        final ItemStack AE2FC_TERMINAL = getModItem(ModIds.AE2FC.toString(), "part_fluid_pattern_terminal", 1, 0);
+        final ItemStack AE2FC_TERMINAL_PRO = getModItem(ModIds.AE2FC.toString(), "part_fluid_pattern_terminal_ex", 1, 0);
+        final ItemStack AE2FC_EXPORTBUS = getModItem(ModIds.AE2FC.toString(), "part_fluid_export", 1, 0);
+        final ItemStack AE2FC_IMPORTBUS = getModItem(ModIds.AE2FC.toString(), "part_fluid_import", 1, 0);
+        final ItemStack AE2FC_OCEDITOR = getModItem(ModIds.AE2FC.toString(), "oc_pattern_editor", 1, 0);
 
         ItemStack[] cells = new ItemStack[] {CELL_1, CELL_4, CELL_16, CELL_64, CELL_256, CELL_1024, CELL_4096};
         ItemStack[] components = new ItemStack[] {
