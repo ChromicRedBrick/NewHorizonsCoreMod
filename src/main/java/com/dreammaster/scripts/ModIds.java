@@ -2,12 +2,14 @@ package com.dreammaster.scripts;
 
 public enum ModIds {
 
+    AdventureBackpack("adventurebackpack"),
     AE2FC("ae2fc"),
     AE2("appliedenergistics2"),
     AFSU("AFSU"),
     ArchitectureCraft("ArchitectureCraft"),
     Avaritia("Avaritia"),
     AvaritiaAddons("avaritiaddons"),
+    Backpack("Backpack"),
     BetterQuesting("betterquesting"),
     BiblioCraft("BiblioCraft"),
     BiblioWoodsBOP("BiblioWoodsBoP"),
@@ -29,8 +31,10 @@ public enum ModIds {
     IronChests("IronChest"),
     Minecraft("minecraft"),
     Natura("Natura"),
+    OpenBlocks("OpenBlocks"),
     OpenComputers("OpenComputers"),
     PamsHarvestCraft("harvestcraft"),
+    SleepingBags("sleepingbag"),
     SpiceOfLife("SpiceOfLife"),
     Thaumcraft("Thaumcraft"),
     TinkerConstruct("TConstruct"),
