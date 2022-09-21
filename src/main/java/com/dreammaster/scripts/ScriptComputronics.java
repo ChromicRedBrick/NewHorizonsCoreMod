@@ -2,7 +2,11 @@ package com.dreammaster.scripts;
 
 import static gregtech.api.util.GT_ModHandler.getModItem;
 
+//import com.dreammaster.item.ItemList;
+import gregtech.api.enums.ItemList;
 import fox.spiteful.avaritia.crafting.ExtremeCraftingManager;
+import net.minecraft.item.ItemStack;
+
 import java.util.Arrays;
 
 public class ScriptComputronics implements IScriptLoader {
@@ -14,14 +18,30 @@ public class ScriptComputronics implements IScriptLoader {
         scriptName.setLength(0);
         scriptName.append("Computronics");
         dependencies.clear();
-        dependencies.addAll(Arrays.asList("Avaritia", "computronics", "gregtech"));
+        dependencies.addAll(Arrays.asList(
+                ModIds.Avaritia.toString(),
+                ModIds.Computronics.toString(),
+                ModIds.GregTech.toString(),
+                ModIds.OpenComputers.toString(),
+                ModIds.Thaumcraft.toString()
+        ));
     }
 
     @Override
     public void loadRecipes() {
+        final ItemStack SALIS_MUNDUS = getModItem(ModIds.Thaumcraft.toString(), "ItemResource", 1, 14);
+
+        final ItemStack APU_T3 = getModItem(ModIds.OpenComputers.toString(), "item", 1, 103);
+
+        final ItemStack PIKO_POWER_IC = ItemList.Circuit_Chip_PPIC.get(1);
+
+        final ItemStack EXTREMELY_PRIMORDIAL_PEARL = getModItem(ModIds.Avaritia.toString(), "big_pearl", 1);
+
+        final ItemStack MAGICAL_MEMORY = getModItem("computronics", "computronics.ocSpecialParts", 1);
+
         ExtremeCraftingManager.getInstance()
                 .addExtremeShapedOreRecipe(
-                        getModItem("computronics", "computronics.ocSpecialParts", 1),
+                        MAGICAL_MEMORY,
                         "aaaaaaaaa",
                         "abbbbbbbc",
                         "abdefedbc",
@@ -40,14 +60,14 @@ public class ScriptComputronics implements IScriptLoader {
                         'd',
                         "circuitBio",
                         'e',
-                        getModItem("Thaumcraft", "ItemResource", 1, 14),
+                        SALIS_MUNDUS,
                         'f',
-                        getModItem("OpenComputers", "item", 1, 103),
+                        APU_T3,
                         'g',
-                        getModItem("gregtech", "gt.metaitem.03", 1, 32163),
+                        PIKO_POWER_IC,
                         'h',
                         "ingotInfinity",
                         'i',
-                        getModItem("Avaritia", "big_pearl", 1));
+                        EXTREMELY_PRIMORDIAL_PEARL);
     }
 }

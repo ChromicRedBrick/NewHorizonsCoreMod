@@ -12,6 +12,7 @@ public enum ModIds {
     BiblioCraft("BiblioCraft"),
     BiblioWoodsBOP("BiblioWoodsBoP"),
     BiomesOPlanty("BiomesOPlenty"),
+    Computronics("computronics"),
     EternalSingularity("eternalsingularity"),
     ExtraBees("ExtraBees"),
     ExtraCells("extracells"),
@@ -23,6 +24,7 @@ public enum ModIds {
     Minecraft("minecraft"),
     OpenComputers("OpenComputers"),
     PamsHarvestCraft("harvestcraft"),
+    Thaumcraft("Thaumcraft"),
     TinkerConstruct("TConstruct"),
     Witchery("witchery");
 
