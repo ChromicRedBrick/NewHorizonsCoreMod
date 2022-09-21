@@ -4,12 +4,13 @@ import static gregtech.api.util.GT_ModHandler.getModItem;
 
 import fox.spiteful.avaritia.crafting.ExtremeCraftingManager;
 import gregtech.api.enums.GT_Values;
+import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Utility;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 public class ScriptEC2 implements IScriptLoader {
 
@@ -18,28 +19,46 @@ public class ScriptEC2 implements IScriptLoader {
         scriptName.setLength(0);
         scriptName.append("EC2");
         dependencies.clear();
-        dependencies.addAll(java.util.Arrays.asList("extracells", "Avaritia", "eternalsingularity"));
+        dependencies.addAll(java.util.Arrays.asList(
+                ModIds.Avaritia.toString(),
+                ModIds.EternalSingularity.toString(),
+                ModIds.ExtraCells.toString(),
+                ModIds.GregTech.toString()
+        ));
     }
 
     @Override
     public void loadRecipes() {
-        final ItemStack GLASS_PANE = new ItemStack(Blocks.glass_pane, 1);
+        final ItemStack INFINITY_CATALYST = getModItem(ModIds.Avaritia.toString(), "Resource", 1, 5);
+
+        final ItemStack  ETERNAL_SINGULARITY = getModItem(ModIds.EternalSingularity.toString(), "eternal_singularity", 1);
+
+        final ItemStack EC2_ADVANCED_HOUSING = getModItem(ModIds.ExtraCells.toString(), "storage.casing", 1);
+        final ItemStack EC2_FLUID_HOUSING = getModItem(ModIds.ExtraCells.toString(), "storage.casing", 1, 1);
+        final ItemStack ME_DIGITAL_SINGULARITY = getModItem(ModIds.ExtraCells.toString(), "storage.physical.advanced.singularity", 1);
+        final ItemStack ME_STORAGE_COMPONENT_16384k = getModItem(ModIds.ExtraCells.toString(), "storage.component", 1, 3);
+        final ItemStack ME_QUANTUM_STORAGE = getModItem(ModIds.ExtraCells.toString(), "storage.physical.advanced.quantum", 1);
 
         final ItemStack CERTUS_PLATE = GT_OreDictUnificator.get(OrePrefixes.plate, Materials.CertusQuartz, 1L);
+        final ItemStack CHROME_PLATE_3 = GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Chrome, 3L);
+        final ItemStack TITANIUM_PLATE_3 = GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Titanium, 3);
+        final ItemStack CERTUS_QUARTZ_SCREW_2 = GT_OreDictUnificator.get(OrePrefixes.screw, Materials.CertusQuartz, 2L);
+        final ItemStack CIRCUIT_CONFIG_3 = GT_Utility.getIntegratedCircuit(3);
+        final ItemStack QUANTUM_CHEST_V = ItemList.Quantum_Chest_IV.get(1);
+        final FluidStack NO_FLUID = GT_Values.NF;
 
-        final ItemStack EC2_ADVANCED_HOUSING = getModItem("extracells", "storage.casing", 1, 0);
-        final ItemStack EC2_FLUID_HOUSING = getModItem("extracells", "storage.casing", 1, 1);
+        final ItemStack GLASS_PANE = getModItem(ModIds.Minecraft.toString(), "glass_pane", 1);
 
         // EC2 Housings
         GT_Values.RA.addAssemblerRecipe(
                 new ItemStack[] {
                     GLASS_PANE,
                     CERTUS_PLATE,
-                    GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Chrome, 3L),
-                    GT_OreDictUnificator.get(OrePrefixes.screw, Materials.CertusQuartz, 2L),
-                    GT_Utility.getIntegratedCircuit(3)
+                    CHROME_PLATE_3,
+                    CERTUS_QUARTZ_SCREW_2,
+                    CIRCUIT_CONFIG_3
                 },
-                GT_Values.NF,
+                NO_FLUID,
                 EC2_ADVANCED_HOUSING,
                 100,
                 16);
@@ -48,18 +67,19 @@ public class ScriptEC2 implements IScriptLoader {
                 new ItemStack[] {
                     GLASS_PANE,
                     CERTUS_PLATE,
-                    GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Titanium, 3),
-                    GT_OreDictUnificator.get(OrePrefixes.screw, Materials.CertusQuartz, 2),
-                    GT_Utility.getIntegratedCircuit(3)
+                    TITANIUM_PLATE_3,
+                    CERTUS_QUARTZ_SCREW_2,
+                    CIRCUIT_CONFIG_3
                 },
-                GT_Values.NF,
+                NO_FLUID,
                 EC2_FLUID_HOUSING,
                 100,
                 16);
+
         // ME Digital Singularity
         ExtremeCraftingManager.getInstance()
                 .addExtremeShapedOreRecipe(
-                        getModItem("extracells", "storage.physical.advanced.singularity", 1),
+                        ME_DIGITAL_SINGULARITY,
                         "----a----",
                         "---aba---",
                         "--ecdce--",
@@ -72,20 +92,20 @@ public class ScriptEC2 implements IScriptLoader {
                         'a',
                         "blockCosmicNeutronium",
                         'b',
-                        getModItem("Avaritia", "Resource", 1, 5),
+                        INFINITY_CATALYST,
                         'c',
-                        getModItem("gregtech", "gt.blockmachines", 1, 129),
+                        QUANTUM_CHEST_V,
                         'd',
-                        getModItem("extracells", "storage.component", 1, 3),
+                        ME_STORAGE_COMPONENT_16384k,
                         'e',
                         "blockInfinity",
                         'f',
-                        getModItem("eternalsingularity", "eternal_singularity", 1));
+                        ETERNAL_SINGULARITY);
 
         // ME Quantum Storage
         ExtremeCraftingManager.getInstance()
                 .addExtremeShapedOreRecipe(
-                        getModItem("extracells", "storage.physical.advanced.quantum", 1),
+                        ME_QUANTUM_STORAGE,
                         "---------",
                         "----a----",
                         "---bdb---",
@@ -102,9 +122,9 @@ public class ScriptEC2 implements IScriptLoader {
                         'c',
                         "circuitInfinite",
                         'd',
-                        getModItem("extracells", "storage.component", 1, 3),
+                        ME_STORAGE_COMPONENT_16384k,
                         'e',
-                        getModItem("extracells", "storage.casing", 1));
+                        EC2_ADVANCED_HOUSING);
 
         // ME Void Storage
         addShapedRecipe(getModItem("extracells", "storage.physical.void", 1), new Object[] {
