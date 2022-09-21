@@ -9,23 +9,20 @@ public enum ModIds {
     Avaritia("Avaritia"),
     AvaritiaAddons("avaritiaddons"),
     BetterQuesting("betterquesting"),
+    BiblioCraft("BiblioCraft"),
+    BiblioWoodsBOP("BiblioWoodsBoP"),
+    BiomesOPlanty("BiomesOPlenty"),
     EternalSingularity("eternalsingularity"),
     ExtraBees("ExtraBees"),
     ExtraCells("extracells"),
+    FloodLights("FloodLights"),
     Forestry("Forestry"),
     GregTech("gregtech"),
     Gendustry("gendustry"),
+    Minecraft("minecraft"),
     OpenComputers("OpenComputers"),
-    BiblioCraft("BiblioCraft"),
     PamsHarvestCraft("harvestcraft"),
-    FloodLights("FloodLights"),
-    BiomesOPlanty("BiomesOPlenty"),
-    BiblioWoodsBOP("BiblioWoodsBoP"),
-
-
-
-
-    ;
+    TinkerConstruct("TConstruct");
 
 
 
