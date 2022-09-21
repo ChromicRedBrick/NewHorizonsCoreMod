@@ -14,26 +14,28 @@ public class ScriptAlveary implements IScriptLoader {
         scriptName.setLength(0);
         scriptName.append("Alveary");
         dependencies.clear();
-        dependencies.addAll(java.util.Arrays.asList("Forestry", "gregtech", "gendustry", "ExtraBees"));
+        dependencies.addAll(java.util.Arrays.asList(
+                ModIds.Forestry.toString(),
+                ModIds.GregTech.toString(),
+                ModIds.Gendustry.toString(),
+                ModIds.ExtraBees.toString()
+        ));
     }
-
-    public static ItemStack Alveary_1 = getModItem("ExtraBees", "alveary", 1, 1);
-    public static ItemStack Alveary_3 = getModItem("ExtraBees", "alveary", 1, 3);
-    public static ItemStack Alveary_7 = getModItem("Forestry", "alveary", 1, 7);
-    public static ItemStack Chipset_1 = getModItem("Forestry", "chipsets", 1, 1);
 
     @Override
     public void loadRecipes() {
-        addShapedRecipe(ItemList.Machine_IndustrialApiary.get(1), new Object[] {
-            Alveary_1,
-            Chipset_1,
-            Alveary_1,
-            ItemList.Robot_Arm_HV.get(1),
-            ItemList.FR_Casing_Sturdy.get(1),
-            ItemList.Robot_Arm_HV.get(1),
-            Alveary_3,
-            Alveary_7,
-            Alveary_3
+        final ItemStack Alveary_1 = getModItem(ModIds.ExtraBees.toString(), "alveary", 1, 1);
+        final ItemStack Alveary_3 = getModItem(ModIds.ExtraBees.toString(), "alveary", 1, 3);
+        final ItemStack Alveary_7 = getModItem(ModIds.Forestry.toString(), "alveary", 1, 7);
+        final ItemStack Chipset_1 = getModItem(ModIds.Forestry.toString(), "chipsets", 1, 1);
+        final ItemStack ROBOT_ARM_HV = ItemList.Robot_Arm_HV.get(1);
+        final ItemStack FR_CASING_STURDY = ItemList.FR_Casing_Sturdy.get(1);
+        final ItemStack INDUSTRIAL_APIARY = ItemList.Machine_IndustrialApiary.get(1);
+
+        addShapedRecipe(INDUSTRIAL_APIARY, new Object[] {
+            Alveary_1, Chipset_1, Alveary_1,
+            ROBOT_ARM_HV, FR_CASING_STURDY, ROBOT_ARM_HV,
+            Alveary_3, Alveary_7, Alveary_3
         });
     }
 }
