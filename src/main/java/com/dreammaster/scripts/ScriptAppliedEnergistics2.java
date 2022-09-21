@@ -16,24 +16,27 @@ public class ScriptAppliedEnergistics2 implements IScriptLoader {
         scriptName.setLength(0);
         scriptName.append("AppliedEnergistics2");
         dependencies.clear();
-        dependencies.addAll(java.util.Arrays.asList("appliedenergistics2"));
+        dependencies.add(ModIds.AE2.toString());
     }
 
     @Override
     public void loadRecipes() {
-        final ItemStack CraftingUnit = getModItem("appliedenergistics2", "tile.BlockCraftingUnit", 1);
-        final ItemStack CoCraftingUnit4x = getModItem("appliedenergistics2", "tile.BlockCraftingUnit", 1, 2);
-        final ItemStack CoCraftingUnit16x = getModItem("appliedenergistics2", "tile.BlockCraftingUnit", 1, 3);
+        final ItemStack CRAFTING_UNIT = getModItem(ModIds.AE2.toString(), "tile.BlockCraftingUnit", 1);
+        final ItemStack CO_CRAFTING_UNIT_4X = getModItem(ModIds.AE2.toString(), "tile.BlockCraftingUnit", 1, 2);
+        final ItemStack CO_CRAFTING_UNIT_16X = getModItem(ModIds.AE2.toString(), "tile.BlockCraftingUnit", 1, 3);
+
+        final Object IV_CIRCUIT_OREDICT = OrePrefixes.circuit.get(Materials.Elite);
+        final Object UHV_SUPERCONDUCTOR = OrePrefixes.circuit.get(Materials.Superconductor);
 
         GT_Values.RA.addAssemblerRecipe(
-                CraftingUnit, OrePrefixes.circuit.get(Materials.Elite), 2, GT_Values.NF, CoCraftingUnit4x, 100, 480);
+                CRAFTING_UNIT, IV_CIRCUIT_OREDICT, 2, GT_Values.NF, CO_CRAFTING_UNIT_4X, 100, 480);
 
         GT_Values.RA.addAssemblerRecipe(
-                CraftingUnit,
-                OrePrefixes.circuit.get(Materials.Superconductor),
+                CRAFTING_UNIT,
+                UHV_SUPERCONDUCTOR,
                 2,
                 GT_Values.NF,
-                CoCraftingUnit16x,
+                CO_CRAFTING_UNIT_16X,
                 100,
                 30720);
     }
