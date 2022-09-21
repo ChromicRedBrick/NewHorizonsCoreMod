@@ -19,17 +19,12 @@ public enum ModIds {
     Forestry("Forestry"),
     GregTech("gregtech"),
     Gendustry("gendustry"),
+    IronChests("IronChest"),
     Minecraft("minecraft"),
     OpenComputers("OpenComputers"),
     PamsHarvestCraft("harvestcraft"),
-    TinkerConstruct("TConstruct");
-
-
-
-
-
-
-
+    TinkerConstruct("TConstruct"),
+    Witchery("witchery");
 
     private String modId;
 
