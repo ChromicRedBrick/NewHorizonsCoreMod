@@ -1,5 +1,7 @@
 package com.dreammaster.scripts;
 
+import net.minecraft.item.ItemStack;
+
 import static gregtech.api.util.GT_ModHandler.getModItem;
 
 import java.util.Arrays;
@@ -13,12 +15,14 @@ public class ScriptHoloInventory implements IScriptLoader {
         scriptName.setLength(0);
         scriptName.append("HoloInventory");
         dependencies.clear();
-        dependencies.addAll(Arrays.asList("holoinventory"));
+        dependencies.add(ModIds.HoloInventory.toString());
     }
 
     @Override
     public void loadRecipes() {
-        addShapedRecipe(getModItem("holoinventory", "Hologlasses", 1), new Object[] {
+        final ItemStack HOLO_GLASSES = getModItem("holoinventory", "Hologlasses", 1);
+        
+        addShapedRecipe(HOLO_GLASSES, new Object[] {
             "stickSteel", "screwSteel", "stickSteel",
             "ringSteel", "boltSteel", "ringSteel",
             "lensInfusedEntropy", "craftingToolScrewdriver", "lensInfusedEntropy"

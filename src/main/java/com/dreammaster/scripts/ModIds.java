@@ -23,6 +23,7 @@ public enum ModIds {
     ForgeMicroblocks("ForgeMicroblock"),
     GregTech("gregtech"),
     Gendustry("gendustry"),
+    HoloInventory("holoinventory"),
     IronChests("IronChest"),
     Minecraft("minecraft"),
     OpenComputers("OpenComputers"),
