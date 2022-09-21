@@ -2,7 +2,6 @@ package com.dreammaster.scripts;
 
 import static gregtech.api.util.GT_ModHandler.getModItem;
 
-//import com.dreammaster.item.ItemList;
 import gregtech.api.enums.ItemList;
 import fox.spiteful.avaritia.crafting.ExtremeCraftingManager;
 import net.minecraft.item.ItemStack;

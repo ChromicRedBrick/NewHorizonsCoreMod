@@ -3,22 +3,17 @@ package com.dreammaster.scripts;
 import static gregtech.api.util.GT_ModHandler.addShapelessCraftingRecipe;
 import static gregtech.api.util.GT_ModHandler.getModItem;
 
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.registry.GameRegistry;
-import fox.spiteful.avaritia.Config;
-import fox.spiteful.avaritia.crafting.ExtremeCraftingManager;
 import gregtech.api.enums.GT_Values;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Utility;
+import fox.spiteful.avaritia.Config;
+import fox.spiteful.avaritia.crafting.ExtremeCraftingManager;
 import java.util.Arrays;
-import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
-import sun.plugin2.util.ParameterNames;
 
 public class ScriptAvaritiaAddons implements IScriptLoader {
     @Override

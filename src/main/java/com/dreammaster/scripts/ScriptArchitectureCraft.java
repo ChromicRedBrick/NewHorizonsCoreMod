@@ -1,11 +1,8 @@
 package com.dreammaster.scripts;
 
-import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.util.GT_OreDictUnificator;
-import gregtech.common.items.GT_MetaGenerated_Item_02;
-import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 
 import static gregtech.api.util.GT_ModHandler.addShapelessCraftingRecipe;

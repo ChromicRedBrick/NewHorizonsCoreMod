@@ -13,10 +13,6 @@ import gregtech.api.util.GT_Utility;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import shedar.mods.ic2.nuclearcontrol.gui.ConfigGui;
-
-import java.util.Map;
 
 public class ScriptAE2FC implements IScriptLoader {
 
