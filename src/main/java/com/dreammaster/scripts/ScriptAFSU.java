@@ -5,6 +5,7 @@ import static gregtech.api.util.GT_ModHandler.getModItem;
 import gregtech.api.enums.GT_Values;
 import gregtech.api.enums.ItemList;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 public class ScriptAFSU implements IScriptLoader {
 
@@ -25,11 +26,13 @@ public class ScriptAFSU implements IScriptLoader {
     public void loadRecipes() {
         final ItemStack AFSU = getModItem("AFSU", "AFSU", 1);
         final ItemStack ALC = getModItem("AFSU", "ALC", 1);
+
         final ItemStack MACHINE_HULL_IV = ItemList.Hull_IV.get(1);
         final ItemStack LAPOTRONIC_ENERGY_ORB = ItemList.Energy_LapotronicOrb.get(1);
         final ItemStack QUANTUMPROCESSOR_ASSEMBLY = ItemList.Circuit_Quantumcomputer.get(1);
         final ItemStack ELITE_NANOCOMPUTER = ItemList.Circuit_Elitenanocomputer.get(1);
         final ItemStack CRYSTALPROCESSOR = ItemList.Circuit_Crystalprocessor.get(1);
+        final FluidStack NO_FLUID = GT_Values.NF;
 
         addShapedRecipe(AFSU, new Object[] {
             "cableGt01Platinum", "itemCasingTungstenSteel", "cableGt01Platinum",
@@ -42,7 +45,7 @@ public class ScriptAFSU implements IScriptLoader {
                     QUANTUMPROCESSOR_ASSEMBLY,
                     LAPOTRONIC_ENERGY_ORB
                 },
-                GT_Values.NF,
+                NO_FLUID,
                 ALC,
                 2400,
                 1920);
@@ -51,7 +54,7 @@ public class ScriptAFSU implements IScriptLoader {
                     ELITE_NANOCOMPUTER,
                     LAPOTRONIC_ENERGY_ORB
                 },
-                GT_Values.NF,
+                NO_FLUID,
                 ALC,
                 2400,
                 1920);
@@ -60,7 +63,7 @@ public class ScriptAFSU implements IScriptLoader {
                     CRYSTALPROCESSOR,
                     LAPOTRONIC_ENERGY_ORB
                 },
-                GT_Values.NF,
+                NO_FLUID,
                 ALC,
                 2400,
                 1920);

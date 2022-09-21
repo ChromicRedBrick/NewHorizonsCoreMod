@@ -6,6 +6,7 @@ import gregtech.api.enums.GT_Values;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 public class ScriptAppliedEnergistics2 implements IScriptLoader {
 
@@ -27,6 +28,7 @@ public class ScriptAppliedEnergistics2 implements IScriptLoader {
 
         final Object IV_CIRCUIT_OREDICT = OrePrefixes.circuit.get(Materials.Elite);
         final Object UHV_SUPERCONDUCTOR = OrePrefixes.circuit.get(Materials.Superconductor);
+        final FluidStack NO_FLUID = GT_Values.NF;
 
         GT_Values.RA.addAssemblerRecipe(
                 CRAFTING_UNIT, IV_CIRCUIT_OREDICT, 2, GT_Values.NF, CO_CRAFTING_UNIT_4X, 100, 480);
@@ -35,7 +37,7 @@ public class ScriptAppliedEnergistics2 implements IScriptLoader {
                 CRAFTING_UNIT,
                 UHV_SUPERCONDUCTOR,
                 2,
-                GT_Values.NF,
+                NO_FLUID,
                 CO_CRAFTING_UNIT_16X,
                 100,
                 30720);
