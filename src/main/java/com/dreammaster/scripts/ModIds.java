@@ -20,6 +20,7 @@ public enum ModIds {
     ExtraCells("extracells"),
     FloodLights("FloodLights"),
     Forestry("Forestry"),
+    ForgeMicroblocks("ForgeMicroblock"),
     GregTech("gregtech"),
     Gendustry("gendustry"),
     IronChests("IronChest"),
