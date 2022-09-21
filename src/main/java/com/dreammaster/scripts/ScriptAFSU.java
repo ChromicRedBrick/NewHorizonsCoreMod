@@ -3,6 +3,7 @@ package com.dreammaster.scripts;
 import static gregtech.api.util.GT_ModHandler.getModItem;
 
 import gregtech.api.enums.GT_Values;
+import gregtech.api.enums.ItemList;
 import net.minecraft.item.ItemStack;
 
 public class ScriptAFSU implements IScriptLoader {
@@ -14,42 +15,53 @@ public class ScriptAFSU implements IScriptLoader {
         scriptName.setLength(0);
         scriptName.append("AFSU");
         dependencies.clear();
-        dependencies.add("AFSU");
+        dependencies.addAll(java.util.Arrays.asList(
+                ModIds.AFSU.toString(),
+                ModIds.GregTech.toString()
+        ));
     }
 
     @Override
     public void loadRecipes() {
-        addShapedRecipe(getModItem("AFSU", "AFSU", 1), new Object[] {
+        final ItemStack AFSU = getModItem("AFSU", "AFSU", 1);
+        final ItemStack ALC = getModItem("AFSU", "ALC", 1);
+        final ItemStack MACHINE_HULL_IV = ItemList.Hull_IV.get(1);
+        final ItemStack LAPOTRONIC_ENERGY_ORB = ItemList.Energy_LapotronicOrb.get(1);
+        final ItemStack QUANTUMPROCESSOR_ASSEMBLY = ItemList.Circuit_Quantumcomputer.get(1);
+        final ItemStack ELITE_NANOCOMPUTER = ItemList.Circuit_Elitenanocomputer.get(1);
+        final ItemStack CRYSTALPROCESSOR = ItemList.Circuit_Crystalprocessor.get(1);
+
+        addShapedRecipe(AFSU, new Object[] {
             "cableGt01Platinum", "itemCasingTungstenSteel", "cableGt01Platinum",
-            "itemCasingTungstenSteel", getModItem("gregtech", "gt.blockmachines", 1, 15), "itemCasingTungstenSteel",
-            "circuitMaster", getModItem("AFSU", "ALC", 1), "circuitMaster"
+            "itemCasingTungstenSteel", MACHINE_HULL_IV, "itemCasingTungstenSteel",
+            "circuitMaster", ALC, "circuitMaster"
         });
 
         GT_Values.RA.addAssemblerRecipe(
                 new ItemStack[] {
-                    getModItem("gregtech", "gt.metaitem.03", 1, 32086),
-                    getModItem("gregtech", "gt.metaitem.01", 1, 32597)
+                    QUANTUMPROCESSOR_ASSEMBLY,
+                    LAPOTRONIC_ENERGY_ORB
                 },
                 GT_Values.NF,
-                getModItem("AFSU", "ALC", 1),
+                ALC,
                 2400,
                 1920);
         GT_Values.RA.addAssemblerRecipe(
                 new ItemStack[] {
-                    getModItem("gregtech", "gt.metaitem.03", 1, 32084),
-                    getModItem("gregtech", "gt.metaitem.01", 1, 32597)
+                    ELITE_NANOCOMPUTER,
+                    LAPOTRONIC_ENERGY_ORB
                 },
                 GT_Values.NF,
-                getModItem("AFSU", "ALC", 1),
+                ALC,
                 2400,
                 1920);
         GT_Values.RA.addAssemblerRecipe(
                 new ItemStack[] {
-                    getModItem("gregtech", "gt.metaitem.03", 1, 32089),
-                    getModItem("gregtech", "gt.metaitem.01", 1, 32597)
+                    CRYSTALPROCESSOR,
+                    LAPOTRONIC_ENERGY_ORB
                 },
                 GT_Values.NF,
-                getModItem("AFSU", "ALC", 1),
+                ALC,
                 2400,
                 1920);
     }
