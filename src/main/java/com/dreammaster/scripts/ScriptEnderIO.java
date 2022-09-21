@@ -16,21 +16,29 @@ public class ScriptEnderIO implements IScriptLoader {
         scriptName.setLength(0);
         scriptName.append("EnderIO");
         dependencies.clear();
-        dependencies.addAll(Arrays.asList("EnderIO", "appliedenergistics2", "Avaritia"));
+        dependencies.addAll(Arrays.asList(
+                ModIds.AE2.toString(),
+                ModIds.Avaritia.toString(),
+                ModIds.EnderIO.toString(),
+                ModIds.GregTech.toString()
+        ));
     }
 
     @Override
     public void loadRecipes() {
-        ItemStack creativeStaffOfTravelling = getModItem("EnderIO", "itemInfiniteTravelStaff", 1);
-        ItemStack denseEnergyCell = getModItem("appliedenergistics2", "tile.BlockDenseEnergyCell", 1);
-        ItemStack energyCell = getModItem("appliedenergistics2", "tile.BlockEnergyCell", 1);
-        ItemStack staffOfTravelling = getModItem("EnderIO", "itemTravelStaff", 1, wildcard);
-        ItemStack endestPearl = getModItem("Avaritia", "Endest_Pearl", 1);
-        ItemStack fieldGeneratorZPM = ItemList.Field_Generator_ZPM.get(1);
+        final ItemStack DENSE_ENERGY_CELL = getModItem(ModIds.AE2.toString(), "tile.BlockDenseEnergyCell", 1);
+        final ItemStack ENERGY_CELL = getModItem(ModIds.AE2.toString(), "tile.BlockEnergyCell", 1);
+
+        final ItemStack ENDEST_PEARL = getModItem(ModIds.Avaritia.toString(), "Endest_Pearl", 1);
+
+        final ItemStack CREATIVE_STAFF_OF_TRAVELLING = getModItem(ModIds.EnderIO.toString(), "itemInfiniteTravelStaff", 1);
+        final ItemStack STAFF_OF_TRAVELLING = getModItem(ModIds.EnderIO.toString(), "itemTravelStaff", 1, wildcard);
+
+        final ItemStack FIELD_GENERATOR_ZPM = ItemList.Field_Generator_ZPM.get(1);
 
         ExtremeCraftingManager.getInstance()
                 .addExtremeShapedOreRecipe(
-                        creativeStaffOfTravelling,
+                        CREATIVE_STAFF_OF_TRAVELLING,
                         "      aaa",
                         "     abca",
                         "    abcba",
@@ -43,14 +51,14 @@ public class ScriptEnderIO implements IScriptLoader {
                         'a',
                         "plateDenseObsidian",
                         'b',
-                        denseEnergyCell,
+                        DENSE_ENERGY_CELL,
                         'c',
-                        energyCell,
+                        ENERGY_CELL,
                         'd',
-                        staffOfTravelling,
+                        STAFF_OF_TRAVELLING,
                         'e',
-                        endestPearl,
+                        ENDEST_PEARL,
                         'f',
-                        fieldGeneratorZPM);
+                        FIELD_GENERATOR_ZPM);
     }
 }

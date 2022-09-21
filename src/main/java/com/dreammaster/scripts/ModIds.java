@@ -13,6 +13,7 @@ public enum ModIds {
     BiblioWoodsBOP("BiblioWoodsBoP"),
     BiomesOPlanty("BiomesOPlenty"),
     Computronics("computronics"),
+    EnderIO("EnderIO"),
     EternalSingularity("eternalsingularity"),
     ExtraBees("ExtraBees"),
     ExtraCells("extracells"),
