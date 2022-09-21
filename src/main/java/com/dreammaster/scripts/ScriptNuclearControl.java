@@ -7,6 +7,7 @@ import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.util.GT_OreDictUnificator;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 public class ScriptNuclearControl implements IScriptLoader {
 
@@ -17,23 +18,28 @@ public class ScriptNuclearControl implements IScriptLoader {
         scriptName.setLength(0);
         scriptName.append("NuclearControl");
         dependencies.clear();
-        dependencies.addAll(java.util.Arrays.asList("IC2NuclearControl"));
+        dependencies.addAll(java.util.Arrays.asList(
+                ModIds.IC2NuclearControl.toString(),
+                ModIds.GregTech.toString()
+        ));
     }
 
     @Override
     public void loadRecipes() {
-        final ItemStack NC2_RANGE_UPGRADE = getModItem("IC2NuclearControl", "ItemUpgrade", 1, 0);
-        final ItemStack NC2_COLOR_UPGRADE = getModItem("IC2NuclearControl", "ItemUpgrade", 1, 1);
-        final ItemStack NC2_REMOTE_SENSOR_KIT = getModItem("IC2NuclearControl", "ItemRemoteSensorKit", 1, 0);
-        final ItemStack NC2_PANEL_MEMORY_CARD = getModItem("IC2NuclearControl", "ItemPanelMemoryCard", 1, 0);
+        final ItemStack NC2_REMOTE_SENSOR_KIT = getModItem(ModIds.IC2NuclearControl.toString(), "ItemRemoteSensorKit", 1, 0);
+        final ItemStack NC2_PANEL_MEMORY_CARD = getModItem(ModIds.IC2NuclearControl.toString(), "ItemPanelMemoryCard", 1, 0);
+
+        final ItemStack CARBON_PLATE_2 = GT_OreDictUnificator.get(OrePrefixes.plateAlloy, Materials.Carbon, 2);
+        final ItemStack CIRCUIT_LV_2 = GT_OreDictUnificator.get(OrePrefixes.circuit, Materials.Basic, 2);
+        final FluidStack NO_FLUID = GT_Values.NF;
 
         GT_Values.RA.addAssemblerRecipe(
                 new ItemStack[] {
                     NC2_REMOTE_SENSOR_KIT,
-                    GT_OreDictUnificator.get(OrePrefixes.plateAlloy, Materials.Carbon, 2),
-                    GT_OreDictUnificator.get(OrePrefixes.circuit, Materials.Basic, 2)
+                    CARBON_PLATE_2,
+                    CIRCUIT_LV_2,
                 },
-                GT_Values.NF,
+                NO_FLUID,
                 NC2_PANEL_MEMORY_CARD,
                 200,
                 16);

@@ -28,6 +28,7 @@ public enum ModIds {
     Gendustry("gendustry"),
     HoloInventory("holoinventory"),
     IC2("IC2"),
+    IC2NuclearControl("IC2NuclearControl"),
     IguanaTweaks("IguanaTweaksTConstruct"),
     IronChests("IronChest"),
     Minecraft("minecraft"),
