@@ -16,37 +16,35 @@ public class ScriptSpiceOfLife implements IScriptLoader {
         scriptName.setLength(0);
         scriptName.append("SpiceOfLife");
         dependencies.clear();
-        dependencies.addAll(Arrays.asList("IC2", "SpiceOfLife"));
+        dependencies.addAll(Arrays.asList(
+                ModIds.IC2.toString(),
+                ModIds.SpiceOfLife.toString()
+        ));
     }
 
     @Override
     public void loadRecipes() {
-        addShapedRecipe(getModItem("SpiceOfLife", "lunchbag", 1), new Object[] {
-            getModItem("minecraft", "paper", 1),
-            null,
-            getModItem("minecraft", "paper", 1),
-            getModItem("IC2", "itemHarz", 1),
-            getModItem("minecraft", "paper", 1),
-            getModItem("IC2", "itemHarz", 1),
-            null,
-            null,
-            null
+        final ItemStack LUNCH_BAG = getModItem(ModIds.SpiceOfLife.toString(), "lunchbag", 1);
+        final ItemStack LUNCH_BOX = getModItem(ModIds.SpiceOfLife.toString(), "lunchbox", 1);
+        final ItemStack FOOD_JOURNAL = getModItem(ModIds.SpiceOfLife.toString(), "bookfoodjournal", 1);
+
+        final ItemStack PAPER = getModItem(ModIds.Minecraft.toString(), "paper", 1);
+        final ItemStack WHEAT = getModItem(ModIds.Minecraft.toString(), "wheat", 1);
+
+        final ItemStack STICKY_RESIN = getModItem(ModIds.IC2.toString(), "itemHarz", 1);
+
+        addShapedRecipe(LUNCH_BAG, new Object[] {
+                PAPER, null, PAPER,
+                STICKY_RESIN, PAPER, STICKY_RESIN,
+                null, null, null
         });
 
-        addShapedRecipe(getModItem("SpiceOfLife", "lunchbox", 1), new Object[] {
-            "plateDoubleIron",
-            "craftingToolScrewdriver",
-            "plateDoubleIron",
-            "screwAnyIron",
-            "plateDoubleIron",
-            "screwAnyIron",
-            null,
-            null,
-            null
+        addShapedRecipe(LUNCH_BOX, new Object[] {
+            "plateDoubleIron", "craftingToolScrewdriver", "plateDoubleIron",
+            "screwAnyIron", "plateDoubleIron", "screwAnyIron",
+            null, null, null
         });
 
-        addShapelessCraftingRecipe(
-                getModItem("SpiceOfLife", "bookfoodjournal", 1),
-                new Object[] {new ItemStack(Items.wheat), new ItemStack(Items.paper)});
+        addShapelessCraftingRecipe(FOOD_JOURNAL, new Object[] {WHEAT, PAPER});
     }
 }
