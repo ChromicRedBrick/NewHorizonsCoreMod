@@ -32,6 +32,7 @@ public enum ModIds {
     PamsHarvestCraft("harvestcraft"),
     Thaumcraft("Thaumcraft"),
     TinkerConstruct("TConstruct"),
+    Translocators("Translocator"),
     Witchery("witchery");
 
     private String modId;

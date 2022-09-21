@@ -1,8 +1,8 @@
 package com.dreammaster.scripts;
 
-import static gregtech.api.util.GT_ModHandler.getModItem;
+import net.minecraft.item.ItemStack;
 
-import java.util.Arrays;
+import static gregtech.api.util.GT_ModHandler.getModItem;
 
 public class ScriptTranslocator implements IScriptLoader {
 
@@ -13,17 +13,20 @@ public class ScriptTranslocator implements IScriptLoader {
         scriptName.setLength(0);
         scriptName.append("Translocators");
         dependencies.clear();
-        dependencies.addAll(Arrays.asList("Translocator"));
+        dependencies.add(ModIds.Translocators.toString());
     }
 
     @Override
     public void loadRecipes() {
-        addShapedRecipe(getModItem("Translocator", "translocator", 2), new Object[] {
+        final ItemStack ITEM_TRANSLOCATOR_2 = getModItem("Translocator", "translocator", 2);
+        final ItemStack FLUID_TRANSLOCATOR_2 = getModItem("Translocator", "translocator", 2, 1);
+
+        addShapedRecipe(ITEM_TRANSLOCATOR_2, new Object[] {
             "itemCasingAluminium", "plateRedAlloy", "itemCasingAluminium",
             "pipeMediumBrass", "gemEnderPearl", "pipeMediumBrass",
             "itemCasingAluminium", "plateRedAlloy", "itemCasingAluminium"
         });
-        addShapedRecipe(getModItem("Translocator", "translocator", 2, 1), new Object[] {
+        addShapedRecipe(FLUID_TRANSLOCATOR_2, new Object[] {
             "itemCasingAluminium", "plateRedAlloy", "itemCasingAluminium",
             "pipeMediumSteel", "gemEnderPearl", "pipeMediumSteel",
             "itemCasingAluminium", "plateRedAlloy", "itemCasingAluminium"
