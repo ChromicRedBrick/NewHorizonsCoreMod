@@ -19,20 +19,33 @@ public class ScriptOpenBlocks implements IScriptLoader {
         scriptName.setLength(0);
         scriptName.append("OpenBlocks");
         dependencies.clear();
-        dependencies.addAll(Arrays.asList("OpenBlocks", "RandomThings", "ExtraUtilities", "gregtech"));
+        dependencies.addAll(Arrays.asList(
+                ModIds.OpenBlocks.toString(),
+                ModIds.RandomThings.toString(),
+                ModIds.ExtraUtilities.toString(),
+                ModIds.GregTech.toString()
+        ));
     }
 
     @Override
     public void loadRecipes() {
-        ItemStack devNull = getModItem("OpenBlocks", "devnull", 1);
-        ItemStack voidDropFilter = getModItem("RandomThings", "dropFilter", 1, 1);
-        ItemStack trashCan = getModItem("ExtraUtilities", "trashcan", 1);
-        ItemStack circuit2 = GT_Utility.getIntegratedCircuit(2);
+        final ItemStack DEV_NULL = getModItem(ModIds.OpenBlocks.toString(), "devnull", 1);
 
-        FluidStack ender250 = FluidRegistry.getFluidStack("ender", 250);
+        final ItemStack VOID_DROP_FILTER = getModItem(ModIds.RandomThings.toString(), "dropFilter", 1, 1);
 
-        addShapelessCraftingRecipe(devNull, new Object[] {voidDropFilter});
+        final ItemStack TRASH_CAN = getModItem(ModIds.ExtraUtilities.toString(), "trashcan", 1);
 
-        GT_Values.RA.addAssemblerRecipe(new ItemStack[] {trashCan, circuit2}, ender250, devNull, 300, 30);
+        final ItemStack CIRCUIT_CONFIG_2 = GT_Utility.getIntegratedCircuit(2);
+        FluidStack LIQUID_ENDER_250 = FluidRegistry.getFluidStack("ender", 250);
+
+        addShapelessCraftingRecipe(DEV_NULL, new Object[] {VOID_DROP_FILTER});
+
+        GT_Values.RA.addAssemblerRecipe(
+                new ItemStack[] {TRASH_CAN, CIRCUIT_CONFIG_2},
+                LIQUID_ENDER_250,
+                DEV_NULL,
+                300,
+                30
+        );
     }
 }
