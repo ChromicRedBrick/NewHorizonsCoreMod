@@ -14,6 +14,7 @@ public enum ModIds {
     BiomesOPlanty("BiomesOPlenty"),
     Computronics("computronics"),
     EnderIO("EnderIO"),
+    EnderZoo("EnderZoo"),
     EternalSingularity("eternalsingularity"),
     ExtraBees("ExtraBees"),
     ExtraCells("extracells"),
